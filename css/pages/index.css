@@ -242,19 +242,19 @@ body {
     background-color: var(--bg-blue);
 }
 
-.img-roll .box{
+.img-roll .mainImgBox{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.img-roll .box .imgrow{
+.img-roll .mainImgBox .imgrow{
     display: flex;
     flex-direction: column;
     width: 30%;
 }
 
-.img-roll .box .imgrow img{
+.img-roll .mainImgBox .imgrow img{
     width: 100%;
     margin-bottom: 15px;
     border: 2px solid var(--img-outline-color);
