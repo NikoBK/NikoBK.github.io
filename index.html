@@ -1,47 +1,22 @@
 ---
-layout: null
+layout: default
+title: Home
 ---
-<!DOCTYPE html>
-<html lang="da">
-<head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta charset="utf-8">
-    <title>Nikolaj Bjørnager</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-</head>
-<body>
-    <h1>This website is currently under construction</h1>
-    <p>Feel free to reach out or connect with me elsewhere in the meantime:</p>
+<h1>This website is currently under construction</h1>
+<p>Feel free to reach out or connect with me elsewhere in the meantime:</p>
+<div class="links">
+  <a href="https://www.linkedin.com/in/nikolaj-bjoernager" target="_blank">LinkedIn</a>
+  <a href="https://github.com/NikoBK" target="_blank">GitHub</a>
+  <a href="mailto:mail@nikolajbjoernager.com">Email</a>
+</div>
 
-    <div class="links">
-        <a href="https://www.linkedin.com/in/nikolaj-bjoernager" target="_blank">LinkedIn</a>
-        <a href="https://github.com/NikoBK" target="_blank">GitHub</a>
-        <a href="mailto:mail@nikolajbjoernager.com">Email</a>
-    </div>
-
-    <h2 style="margin-top: 3rem;">Blog Posts</h2>
-
-    <!-- TEST: Jekyll debug info -->
-    <p>Total posts: {{ site.posts | size }}</p>
-    <p>Rendered at: {{ site.time }}</p>
-
-    <ul>
-    {% for page in site.pages %}
-    <li>Page: {{ page.path }}</li>
-    {% endfor %}
-    {% for post in site.posts %}
-    <li>Post: {{ post.path }}</li>
-    {% endfor %}
-    </ul>
-
-    <div class="blog-grid">
-      {% for post in site.posts %}
-        <a href="{{ post.url }}" class="blog-box">
-          <strong>{{ post.title }}</strong><br>
-          <small>{{ post.date | date: "%B %d, %Y" }}</small>
-        </a>
-      {% endfor %}
-    </div>
-</body>
-</html>
+<h2 style="margin-top: 3rem;">Blog Posts</h2>
+<p>Total posts: {{ site.posts | size }}</p>
+<div class="blog-grid">
+  {% for post in site.posts %}
+    <a href="{{ post.url }}" class="blog-box">
+      <strong>{{ post.title }}</strong><br>
+      <small>{{ post.date | date: "%B %d, %Y" }}</small>
+    </a>
+  {% endfor %}
+</div>
