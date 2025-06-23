@@ -15,5 +15,15 @@
         <a href="https://github.com/NikoBK" target="_blank">GitHub</a>
         <a href="mailto:mail@nikolajbjoernager.com">Email</a>
     </div>
+
+    <h2 style="margin-top: 3rem;">Blog Posts</h2>
+    <div class="blog-grid">
+      {% for post in site.posts %}
+        <a href="{{ post.url }}" class="blog-box">
+          <strong>{{ post.title }}</strong><br>
+          <small>{{ post.date | date: "%B %d, %Y" }}</small>
+        </a>
+      {% endfor %}
+    </div>
 </body>
 </html>
