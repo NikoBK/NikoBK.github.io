@@ -26,6 +26,15 @@ layout: null
     <p>Total posts: {{ site.posts | size }}</p>
     <p>Rendered at: {{ site.time }}</p>
 
+    <ul>
+    {% for page in site.pages %}
+    <li>Page: {{ page.path }}</li>
+    {% endfor %}
+    {% for post in site.posts %}
+    <li>Post: {{ post.path }}</li>
+    {% endfor %}
+    </ul>
+
     <div class="blog-grid">
       {% for post in site.posts %}
         <a href="{{ post.url }}" class="blog-box">
