@@ -1,0 +1,33 @@
+---
+layout: default
+title: Nikolaj Bjørnager
+---
+<h1>This website is currently under construction</h1>
+<p>Feel free to reach out or connect with me elsewhere in the meantime:</p>
+<div class="links">
+  <a href="https://www.linkedin.com/in/nikolaj-bjoernager" target="_blank">LinkedIn</a>
+  <a href="https://github.com/NikoBK" target="_blank">GitHub</a>
+  <a href="mailto:mail@nikolajbjoernager.com">Email</a>
+</div>
+
+<h2 style="margin-top: 3rem;">Blog Posts</h2>
+<!--
+<p>Total posts: {{ site.posts | size }}</p>
+<p>Pages source: {{ site.github.pages_hostname }}</p>
+<p>Repo URL: {{ site.github.repository_url }}</p>
+{% for f in site.static_files %}
+  <p>Static file: {{ f.path }}</p>
+{% endfor %}
+{% for doc in site.documents %}
+  <p>Doc: {{ doc.path }}</p>
+{% endfor %}
+-->
+
+<div class="blog-grid">
+  {% for post in site.posts %}
+    <a href="{{ post.url }}" class="blog-box">
+      <strong>{{ post.title }}</strong><br>
+      <small>{{ post.date | date: "%B %d, %Y" }}</small>
+    </a>
+  {% endfor %}
+</div>
