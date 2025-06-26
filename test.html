@@ -1,0 +1,52 @@
+---
+layout: testing
+title: Nikolaj Bjørnager
+---
+<!-- ===== NAVIGATION BAR ===== -->
+<header class="site-header">
+  <nav>
+    <a class="nav-link" href="/">HOME</a>
+    <a class="nav-link" href="/blog">BLOG</a>
+    <a class="nav-link" href="/portfolio">PORTFOLIO</a>
+  </nav>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="container">
+  <!-- LEFT SIDEBAR -->
+  <div class="sidebar">
+    <img src="images/avatar.png" alt="Nikolaj Bjørnager" />
+    <h1>Nikolaj Bjørnager</h1>
+    <p>Robotics & Biomedical Engineering (M.Sc.) @ AAU</p>
+    <p>Denmark</p>
+    <hr>
+    <div class="social-links">
+      <a target="_blank" rel="noreferrer noopener" href="https://github.com/NikoBK"><i class="fab fa-github"></i></a>
+      <a target="_blank" rel="noreferrer noopener" href="https://www.linkedin.com/in/nikolaj-bjoernager"><i class="fab fa-linkedin"></i></a>
+      <a target="_blank" rel="noreferrer noopener" href="https://www.youtube.com/@NikoBK"><i class="fab fa-youtube"></i></a>
+    </div>
+</div>
+
+  <!-- RIGHT MAIN SECTION -->
+  <div class="main">
+    <h2>About Me</h2>
+    <p>
+    Hi! I am a student at Aalborg University (AAU) who is finishing up their bachelor of science (b.sc) in Robotics Engineering. I am currently looking forward to beginning a master of science (m.sc) in biomedical engineering with the hopes of combining both degrees to be a biomedical robotics engineer who specializes in robotics applied in the health sector worldwide.
+    </p>
+
+    <hr />
+
+    <h2>Knowledge Sharing</h2>
+    <p>I am very thrilled to try out blogging, not directly related to robotics in any specific branch of technology but rather any kind of topic that I find interesting enough to blog about. Topics may range from anything between game design, and biology. Things like computer vision, engineering, math, physics, anatomy, physiology, psychology and etc. Are of great interest to me.<br><br>The <a href="#">blog post site</a> will offer categorization and sorting of blog posts so that you can check out specific types of blogs I do. I hope to see you there!</p>
+
+    {% assign latest = site.posts | first %}
+    {% if latest %}
+    <a class="blog-button" href="{{ latest.url }}">
+    Latest&nbsp;Post: {{ latest.title | truncate: 40 }}
+    </a>
+    {% else %}
+    <a class="blog-button" href="/blog">Visit My Blog</a>
+    {% endif %}
+
+  </div>
+</div>
