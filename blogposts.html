@@ -2,32 +2,34 @@
 layout: default
 title: Nikolaj Bjørnager
 ---
-<h1>This website is currently under construction</h1>
-<p>Feel free to reach out or connect with me elsewhere in the meantime:</p>
-<div class="links">
-  <a href="https://www.linkedin.com/in/nikolaj-bjoernager" target="_blank">LinkedIn</a>
-  <a href="https://github.com/NikoBK" target="_blank">GitHub</a>
-  <a href="mailto:mail@nikolajbjoernager.com">Email</a>
-</div>
+<!-- ─── Site-header ───────────────────────────────────── -->
+<header class="site-header blog-header">
+  <div class="site-title"><a href="/">Nikolaj Bjørnager</a></div>
 
-<h2 style="margin-top: 3rem;">Blog Posts</h2>
-<!--
-<p>Total posts: {{ site.posts | size }}</p>
-<p>Pages source: {{ site.github.pages_hostname }}</p>
-<p>Repo URL: {{ site.github.repository_url }}</p>
-{% for f in site.static_files %}
-  <p>Static file: {{ f.path }}</p>
-{% endfor %}
-{% for doc in site.documents %}
-  <p>Doc: {{ doc.path }}</p>
-{% endfor %}
--->
+  <nav>
+    <a class="nav-link" href="/">HOME</a>
+    <a class="nav-link" href="/blog">BLOG</a>
+    <a class="nav-link" href="/portfolio">PORTFOLIO</a>
+  </nav>
+</header>
 
-<div class="blog-grid">
-  {% for post in site.posts %}
-    <a href="{{ post.url }}" class="blog-box">
-      <strong>{{ post.title }}</strong><br>
-      <small>{{ post.date | date: "%B %d, %Y" }}</small>
-    </a>
-  {% endfor %}
-</div>
+<!-- ─── Page content ──────────────────────────────────── -->
+<main class="blog-container">
+
+  {% assign latest = site.posts | first %}
+  {% if latest %}
+    <p class="latest-cta">
+      Latest&nbsp;post: <a href="{{ latest.url }}">{{ latest.title | truncate: 60 }}</a>
+    </p>
+  {% endif %}
+
+  <div class="blog-strip">
+    {% for post in site.posts %}
+      <a href="{{ post.url }}" class="blog-card">
+        <strong>{{ post.title }}</strong><br />
+        <small>{{ post.date | date: "%B %d, %Y" }}</small>
+      </a>
+    {% endfor %}
+  </div>
+
+</main>
