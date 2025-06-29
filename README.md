@@ -9,3 +9,10 @@ Start the local jekyll server at `http://localhost:4000` by running the command:
 
 `--livereload` allows you to just refresh the site on every save (just like html normally)\
 Stop the jekyll server with ctrl+c interrupt.
+
+### Setting up the bundle install path
+Use the following command to set up a local environment for bundle to install gems to:
+`bundle config set --local path 'vendor/bundle'`
+
+Then run
+`bundle install`
