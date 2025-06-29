@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<header class="site-header blog-header">
+  <div class="site-title"><a href="/">Nikolaj Bjørnager</a></div>
+  <nav>
+    <a class="nav-link" href="/">HOME</a>
+    <a class="nav-link" href="/blog">BLOG</a>
+    <a class="nav-link" href="/portfolio">PORTFOLIO</a>
+  </nav>
+</header>
+
+<main class="post-wrapper">
+  <article class="post-content">
+    <h1>{{ page.title }}</h1>
+    <p class="post-date">{{ page.date | date: "%B %d, %Y" }}</p>
+    {{ content }}
+  </article>
+</main>
