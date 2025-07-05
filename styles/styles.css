@@ -118,7 +118,7 @@ body {
     max-width:850px;            /* keeps text line-length readable      */
     width:100%;
     margin:0 auto;
-    padding:2rem 1.5rem;        /* ← breathing room left / right       */
+    padding:2rem 1.5rem;        /* breathing room left / right       */
 }
 
 .post-content{
@@ -179,6 +179,50 @@ body {
 .post-content img.w800          { max-width:800px; }
 .post-content img.w600          { max-width:600px; }
 .post-content img.w400          { max-width:400px; }
+
+/* ── latest-post hero ───────────────────────────────── */
+.blog-heading       { font-size:1.4rem; margin:0 0 .6rem; }
+
+.latest-card{
+    display:block;
+    height:280px;              /* adjust hero height here   */
+    background-size:cover;
+    background-position:center;
+    border-radius:8px;
+    position:relative;
+    margin-bottom:1.5rem;
+}
+.latest-overlay{
+    position:absolute; inset:0;
+    background:rgba(0,0,0,.45);
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:1.5rem;
+}
+.latest-overlay h2{margin:0;font-size:2rem;color:var(--fg);}
+.latest-overlay p {margin:.3rem 0 0;color:#8b949e;}
+
+.blog-sep{ border:0; border-top:1px solid #30363d; margin:2.5rem 0; }
+
+/* ── smaller post cards ─────────────────────────────── */
+.blog-card{
+    flex:0 0 220px; height:140px;
+    background-size:cover; background-position:center;
+    border-radius:6px; position:relative;
+    text-decoration:none;
+}
+.card-overlay{
+    position:absolute; inset:0;
+    background:rgba(0,0,0,.45);
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:1rem;
+    border:1px solid transparent; border-radius:6px;
+    transition:border-color .2s;
+}
+.blog-card:hover .card-overlay{ border-color:var(--accent); }
+
+.card-overlay strong{color:var(--fg); font-weight:600; line-height:1.3;}
+.card-overlay small {color:#8b949e; margin-top:.2rem;}
+
 
 /* ───────── RESPONSIVE ─────────────────────── */
 @media (max-width:768px){

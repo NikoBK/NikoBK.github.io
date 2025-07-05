@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Nikolaj Bjørnager
+title: Blog
 ---
-<!-- ─── Site-header ───────────────────────────────────── -->
+
+<!--  Site header  -->
 <header class="site-header blog-header">
   <div class="site-title"><a href="/">Nikolaj Bjørnager</a></div>
-
   <nav>
     <a class="nav-link" href="/">HOME</a>
     <a class="nav-link" href="/blog">BLOG</a>
@@ -13,21 +13,31 @@ title: Nikolaj Bjørnager
   </nav>
 </header>
 
-<!-- ─── Page content ──────────────────────────────────── -->
 <main class="blog-container">
 
   {% assign latest = site.posts | first %}
   {% if latest %}
-    <p class="latest-cta">
-      Latest&nbsp;post: <a href="{{ latest.url }}">{{ latest.title | truncate: 60 }}</a>
-    </p>
+    <h1 class="blog-heading">Latest post</h1>
+
+    <a href="{{ latest.url }}" class="latest-card"
+       style="background-image:url('{{ latest.thumb | default: '/images/post-thumbs/default.webp' | relative_url }}');">
+      <div class="latest-overlay">
+        <h2>{{ latest.title }}</h2>
+        <p>{{ latest.date | date: "%B %d, %Y" }}</p>
+      </div>
+    </a>
   {% endif %}
+
+  <hr class="blog-sep">
 
   <div class="blog-strip">
     {% for post in site.posts %}
-      <a href="{{ post.url }}" class="blog-card">
-        <strong>{{ post.title }}</strong><br />
-        <small>{{ post.date | date: "%B %d, %Y" }}</small>
+      <a href="{{ post.url }}" class="blog-card"
+         style="background-image:url('{{ post.thumb | default: '/images/post-thumbs/default.webp' | relative_url }}');">
+        <div class="card-overlay">
+          <strong>{{ post.title }}</strong>
+          <small>{{ post.date | date: "%B %d, %Y" }}</small>
+        </div>
       </a>
     {% endfor %}
   </div>
