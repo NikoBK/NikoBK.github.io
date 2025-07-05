@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Blog
+title: Nikolaj Bjørnager | Blog
 ---
 
 <!--  Site header  -->
@@ -29,17 +29,18 @@ title: Blog
   {% endif %}
 
   <hr class="blog-sep">
+  <h2>All posts</h1>
+  <div class="blog-grid">
+  {% for post in site.posts %}
+    <a href="{{ post.url }}" class="blog-card"
+       style="background-image:url('{{ post.thumb | default: '/images/post-thumbs/default.webp' | relative_url }}');">
+      <div class="card-overlay">
+        <strong>{{ post.title }}</strong>
+        <small>{{ post.date | date: "%B %d, %Y" }}</small>
+      </div>
+    </a>
+  {% endfor %}
+</div>
 
-  <div class="blog-strip">
-    {% for post in site.posts %}
-      <a href="{{ post.url }}" class="blog-card"
-         style="background-image:url('{{ post.thumb | default: '/images/post-thumbs/default.webp' | relative_url }}');">
-        <div class="card-overlay">
-          <strong>{{ post.title }}</strong>
-          <small>{{ post.date | date: "%B %d, %Y" }}</small>
-        </div>
-      </a>
-    {% endfor %}
-  </div>
 
 </main>
