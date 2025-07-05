@@ -1,0 +1,31 @@
+---
+layout: default
+title: Portfolio
+permalink: /portfolio/
+---
+
+<header class="site-header blog-header">
+  <div class="site-title"><a href="/">Nikolaj Bjørnager</a></div>
+  <nav>
+    <a class="nav-link" href="/">HOME</a>
+    <a class="nav-link" href="/blog">BLOG</a>
+    <a class="nav-link" href="/portfolio">PORTFOLIO</a>
+  </nav>
+</header>
+
+<main class="blog-container">
+  <h1 class="blog-heading">Portfolio posts</h1>
+
+  <div class="blog-grid">
+    {%- assign resume_posts = site.tags.resume | default: site.categories.resume -%}
+    {%- for post in resume_posts -%}
+      <a href="{{ post.url }}" class="blog-card"
+         style="background-image:url('{{ post.thumb | default:'/images/post-thumbs/default.webp' | relative_url }}');">
+        <div class="card-overlay">
+          <strong>{{ post.title }}</strong>
+          <small>{{ post.date | date: "%B %d, %Y" }}</small>
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+</main>
