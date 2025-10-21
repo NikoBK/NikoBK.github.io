@@ -1,7 +1,7 @@
 title: Nikolaj
 description: Personal site
 
-# ── Markdown & syntax-highlighting ─────────────
-markdown: kramdown          # default on GitHub Pages, but explicit is fine
+# Markdown and syntax-highlighting
+markdown: kramdown
 highlighter: rouge
-rouge_theme: base16.dark    # pick any Rouge theme you like
+rouge_theme: base16.dark
