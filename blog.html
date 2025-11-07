@@ -16,7 +16,7 @@ permalink: /blog/
 
 <main class="blog-container">
 
-  {% assign latest = site.posts | first %}
+  {% assign latest = site.posts | where_exp: "post", "post.hidden != true" | first %}
   {% if latest %}
     <h1 class="blog-heading">Latest post</h1>
 
@@ -33,6 +33,7 @@ permalink: /blog/
   <h2>All posts</h1>
   <div class="blog-grid">
   {% for post in site.posts %}
+  {% unless post.hidden %}
     <a href="{{ post.url }}" class="blog-card"
        style="background-image:url('{{ post.thumb | default: '/images/post-thumbs/default.webp' | relative_url }}');">
       <div class="card-overlay">
@@ -40,7 +41,8 @@ permalink: /blog/
         <small>{{ post.date | date: "%B %d, %Y" }}</small>
       </div>
     </a>
-  {% endfor %}
+  {% endunless %}
+{% endfor %}
 </div>
 
 

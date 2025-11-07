@@ -3,6 +3,7 @@ title: Underwater Image Enhancement
 date: 2023-12-18
 lastedit: 2025-10-19
 layout: post
+hidden: false
 tags: [resume, testing, computer-vision]
 thumb: /images/thumbs/imgenhance.webp
 permalink: /:title/
