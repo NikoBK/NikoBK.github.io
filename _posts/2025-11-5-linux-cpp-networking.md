@@ -1,5 +1,5 @@
 ---
-title: Linux Networking (TCP)
+title: C++ Networking (Linux Tutorial)
 date: 2025-11-07
 lastedit: 2025-12-04
 layout: post
