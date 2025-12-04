@@ -263,13 +263,13 @@ body {
 /* ───────── CANVAS BACKGROUND LAYER ───────── */
 
 #nokey {
-position: fixed;
-inset: 0;
-width: 100vw;
-height: 100vh;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
 
-z-index: 0;       /* behind all content */
-background: transparent;
+    z-index: 0; /* behind all content */
+    background: transparent;
 }
 
 /* Force all real content above the canvas */
