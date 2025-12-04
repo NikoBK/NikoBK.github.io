@@ -259,3 +259,23 @@ body {
     .main             { text-align:center; }
     .sidebar img      { width:200px; height:200px; }
 }
+
+/* ───────── CANVAS BACKGROUND LAYER ───────── */
+
+#nokey {
+position: fixed;
+inset: 0;
+width: 100vw;
+height: 100vh;
+
+z-index: 0;       /* behind all content */
+background: transparent;
+}
+
+/* Force all real content above the canvas */
+body > *:not(canvas) {
+    position: relative;
+    z-index: 1;
+}
+
+
