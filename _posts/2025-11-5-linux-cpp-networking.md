@@ -1,18 +1,14 @@
 ---
 title: Linux Networking (TCP)
 date: 2025-11-07
-lastedit: 2025-11-07
+lastedit: 2025-12-04
 layout: post
-hidden: true
+hidden: false
 tags: [tutorial, cpp]
 thumb: /images/thumbs/default.webp
 permalink: /:title/
 ---
 
-# Author's Note
-This blog post is currently still undergoing changes, corrects and etc, thank you for checking it out in advance of it being published.
-
----
 
 # Table of Contents
 * Table of Contents
@@ -21,31 +17,23 @@ This blog post is currently still undergoing changes, corrects and etc, thank yo
 ---
 
 # Introduction
-After making a blog post about [a drone protocol I worked on](/nsqd), I've wanted to make a blog post that was more like a tutorial on how to get set up with a similar custom TCP protocol like that of which we used for the drone. It is written in C++ and unlike the drone project I am going to keep this post relevant to only networking on Linux. It will be server and client based with Linux on both sides of the networking solution. The entire source code used for this blog can be accessed [here, on my github](https://github.com/NikoBK/linux-cpp-networking).
-
-## Notation
-I am going to use some terms that might be new to you depending on your programming experience.
-- directory = folder
-- server = an application that hosts a socket for clients to connect to
-- client = an application that can connect to a specified socket
-- backend = the server application
-- frontend = the client application
+After making a blog post about [a drone protocol I worked on](/nsqd){:target="_blank" rel="noopener noreferrer"}, I've wanted to make a blog post that was more like a tutorial on how to get set up with a similar custom TCP protocol like that of which we used for the drone. It is written in C++ and unlike the drone project I am going to keep this post relevant to only networking on Linux. It will be server and client based with Linux on both sides of the networking solution. The entire source code used for this blog can be accessed [here, on my github](https://github.com/NikoBK/linux-cpp-networking){:target="_blank" rel="noopener noreferrer"}.
 
 ---
 # Setup
-This section goes through the technicalities you are going to want if you want the same setup as me and gurantee the same outputs. Read it carefully please.
+This section covers technical aspects that are required to get the same output that I get on my end. Read it carefully please.
 
 ## Text Editor
 This will be for editing file contents, it really does not matter what you use. I use neovim with plugins for ease of use and better performance.
 
 ## Operating System
-I am making this project on Arch Linux which dictates my choice of compiler as we have to set that up very soon. Arch Linux is rolling release so you can do a system update to ensure you are on the latest version as I am. Despite always being recommended to follow the release, it probably won't matter if you are behind the latest version for this project.
+I am making this project on Arch Linux which dictates my choice of compiler. We have to set that up very soon. Arch Linux is rolling release so you can do a system update to ensure you are on the latest version as I am. Despite always being recommended to follow the release, it probably won't matter if you are behind the latest version for this project.
 
 ## Compiler
 To compile our code we are going to use GCC, a GNU C/C++ compiler that builds our `.cpp` files into binaries we can run. Furthermore we are going to use CMake to make a build system generator that ensures we generate build scripts (Makefiles). This can be installed using `sudo pacman -S gcc cmake` which will also enable support for C++ 23 on arch. You can check the version with `g++ --version`, if it says 14.x or later you are good.
 
 ## Programming Language
-As far as C++ goes I am going to use C++ version 23 since it the latest stable release, but the version you do this on should not matter too much, it should work exactly the same on C++ version 20 too which is even more widely supported than v23. Support for the latest C++ version is installed with the gcc step above.
+As far as C++ goes I am going to use C++ version 23 since it is the latest stable release, but the version you do this on should not matter too much, it should work exactly the same on C++ version 20 too which is even more widely supported than v23. Support for the latest C++ version is installed with the gcc step above.
 
 ## Testing the Setup
 Let's make a simple test and try to compile a `.cpp` file into a binary. Create a directory (folder) called `server`, and then make a `main.cpp` file inside of that directory that looks like this:
@@ -171,8 +159,8 @@ private:
 
 Next, create a `message.hpp` file in the `include/` directory (we will fill in this file with code later):
 ```cpp
-#ifndef MESSAGE_H
-#define MESSAGE_H
+#ifndef MESSAGE_HPP
+#define MESSAGE_HPP
 
 #endif
 ```
@@ -297,7 +285,7 @@ int main() {
 }
 ```
 
-Next we want to add `AcceptConnection()` and `HandleConnection()`, add the following code to the bottom of `server.cpp`:
+Next we want to add `AcceptConnection()` and `HandleConnection()`. Add the following code to the bottom of `server.cpp`:
 ```cpp
 void Server::AcceptConnection()
 {
@@ -449,8 +437,8 @@ void Server::Send(Message& message)
 This is going to create some errors, but we are fixing those now. First add `#include <vector>` to the top of `server.cpp`.
 Next we need to create the message decoder, go to `message.hpp` and replace the entire file contents with this:
 ```cpp
-#ifndef MESSAGE_H
-#define MESSAGE_H
+#ifndef MESSAGE_HPP
+#define MESSAGE_HPP
 
 #include <vector>
 #include <string.h>
@@ -569,7 +557,7 @@ struct Message {
 #endif
 ```
 
-While we are here we have added the message encoder which we will use to write data later. Now let us add a disconnect method to `server.cpp`. Add this to the bottom of the file:
+Here we have added a message encoder which will be used to write data later. Now let us add a disconnect method to `server.cpp`. Add this to the bottom of the file:
 ```cpp
 void Server::Disconnect(const std::string& reason)
 {
@@ -592,7 +580,7 @@ With this added, we should be able to compile the backend by standing in `server
 
 ---
 # II: Creating the Client
-For this, you guessed it, we need to make a `client` directory within the same directory of which we made the `server` directory. Like with `server`, create two subfolders in `client`: `include` and `src`. Additionally, make a `CMakeLists.txt` file there too:
+For this, you guessed it, we need to make a `client` directory within the same directory of which we made the `server` directory. Like with `server`, create two subfolders in the `client` directory: `include` and `src`. Additionally, make a `CMakeLists.txt` file there too:
 ```cmake
 cmake_minimum_required(VERSION 3.16)
 project(server LANGUAGES CXX)
@@ -849,9 +837,10 @@ At this point you should have executable binaries for both the client and server
 
 If you did everything correct you should see the server say "Client Connection Established" once the client starts, and the client should say: "Succesfully connected to 127.0.0.1:5000". With that done, lets try and send some data back and forth.
 
---
+---
+
 # III: Sending Data Back and Forth
-Now let us try to make two messages that each contains some variables that we can read and write back and forth to make the server and client communicate with eachother.
+Now let's try to make two messages that each contains some variables that we can read and write back and forth to make the server and client communicate with eachother.
 
 In `constants.hpp` for both `server` and `client` add the following two constants:
 ```cpp
@@ -951,7 +940,7 @@ Build this and run the `server` and `client` like before and you should the serv
 
 ---
 # Floating Point Representation
-You may have noticed there is no float representation in the encoder nor the decoder. This is because back when I came up with this custom protocol we could not figure out how to correctly send floating point numbers, so I am dedicating this section of the post to exactly that.
+You may have noticed there is no float representation in the encoder nor the decoder. This is because back when my team and I came up with this custom protocol we could not figure out how to correctly send floating point numbers, so I am dedicating this section of the post to exactly that.
 
 In order to send a floating point number (datatype: float) the idea is to treat the float as its raw 32-bit representation, then byte-swap the bits manually using an integer type and at last reinterpreting the bits back as a float when decoding it on the receiving end.
 
@@ -1072,4 +1061,9 @@ switch ((int)messageId)
 ```
 
 Build this, and run the server first, then client. You should see the float value correctly displayed now!
+
+---
+
+# The End
+As mentioned in the start of this tutorial you can find the source code [here](https://github.com/NikoBK/linux-cpp-networking/tree/){:target="_blank" rel="noopener noreferrer"}. I hope this tutorial is helpful to somebody out here. It will be used for future references on the topic of networking basics in C++. Thank you for reading!
 
