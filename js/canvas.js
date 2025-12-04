@@ -42,7 +42,7 @@ mouse_ball = {
 // Random speed
 function getRandomSpeed(pos){
     var  min = -1,
-    max = 1;
+    max = 0.8;
     switch(pos){
         case 'top':
             return [randomNumFrom(min, max), randomNumFrom(0.1, max)];
