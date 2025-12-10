@@ -3,8 +3,10 @@ can_w = parseInt(canvas.getAttribute('width')),
 can_h = parseInt(canvas.getAttribute('height')),
 ctx = canvas.getContext('2d');
 
+var isMobile = window.innerWidth < 600;
+
 // console.log(typeof can_w);
-var BALL_NUM = 30
+var BALL_NUM = isMobile ? 12 : 30;
 
 var ball = {
     x: 0,
@@ -230,12 +232,23 @@ function initBalls(num){
 }
 // Init Canvas
 function initCanvas(){
-    canvas.setAttribute('width', window.innerWidth);
-    canvas.setAttribute('height', window.innerHeight);
+    const dpr = window.devicePixelRatio || 1;
 
-    can_w = parseInt(canvas.getAttribute('width'));
-    can_h = parseInt(canvas.getAttribute('height'));
+    // Set internal canvas resolution based on DPR
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+
+    // Set CSS display size (so it doesn’t appear gigantic)
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+
+    // Scale drawing operations
+    ctx.scale(dpr, dpr);
+
+    can_w = window.innerWidth;
+    can_h = window.innerHeight;
 }
+
 window.addEventListener('resize', function(e){
     console.log('Window Resize...');
     initCanvas();
