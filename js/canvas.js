@@ -261,6 +261,62 @@ function goMovie(){
 }
 goMovie();
 
+// Controls
+const ballSlider = document.getElementById("ballRange");
+const ballValue = document.getElementById("ballValue");
+
+const sizeSlider = document.getElementById("sizeRange");
+const sizeValue = document.getElementById("sizeValue");
+
+const speedSlider = document.getElementById("speedRange");
+const speedValue = document.getElementById("speedValue");
+
+const colorPicker = document.getElementById("colorPicker");
+
+let speedMultiplier = 1;
+
+// Update ball count
+ballSlider.addEventListener("input", () => {
+    BALL_NUM = parseInt(ballSlider.value);
+    ballValue.textContent = BALL_NUM;
+});
+
+// Update ball size
+sizeSlider.addEventListener("input", () => {
+    R = parseInt(sizeSlider.value);
+    sizeValue.textContent = R;
+
+    // update all existing balls
+    balls.forEach(b => {
+        b.r = R;
+    });
+});
+
+// Update speed multiplier
+speedSlider.addEventListener("input", () => {
+    speedMultiplier = parseFloat(speedSlider.value);
+    speedValue.textContent = speedMultiplier.toFixed(1);
+});
+
+// Override speeds during update
+const originalUpdateBalls = updateBalls;
+updateBalls = function() {
+    balls.forEach(b => {
+        b.x += b.vx * speedMultiplier;
+        b.y += b.vy * speedMultiplier;
+    });
+    originalUpdateBalls();
+};
+
+// Update ball color
+colorPicker.addEventListener("input", () => {
+    const hex = colorPicker.value;
+
+    ball_color.r = parseInt(hex.substr(1,2), 16);
+    ball_color.g = parseInt(hex.substr(3,2), 16);
+    ball_color.b = parseInt(hex.substr(5,2), 16);
+});
+
 // Mouse effect
 canvas.addEventListener('mouseenter', function(){
     console.log('mouseenter');
