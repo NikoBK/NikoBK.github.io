@@ -1,14 +1,15 @@
 :root {
-    --bg: #0d1117;
-    --fg: #c9d1d9;
-    --accent: #58a6ff;
-    --btn: #58a6ff;
-    --btn-hover: #c9d1d9;
-    --socials: #58a6ff;
+    --bg: #0d1117; /* page background color */
+    --fg: #c9d1d9; /* default text color */
+    --accent: #58a6ff; /* cyan highlight / accent for buttons */
+    --btn: #58a6ff; /* button color, not hovering */
+    --btn-hover: #c9d1d9; /* button color when hovering */
 }
 
-/* ───────── GLOBAL ─────────────────────────── */
-* { box-sizing: border-box; }
+/* global */
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
@@ -20,7 +21,7 @@ body {
     min-height: 100vh;
 }
 
-/* ───────── NAVIGATION / HEADER ────────────── */
+/* header and nav bar */
 .site-header {
     width: 100%;
     padding: 1rem 2rem;
@@ -43,44 +44,279 @@ body {
     transition: color 0.2s;
 }
 .nav-link:hover,
-.nav-link:focus { color: var(--accent); }
-
-/* ───────── LANDING-PAGE LAYOUT ────────────── */
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    padding: 2rem;
-    max-width: 1600px;
+.nav-link:focus {
+    color: var(--accent);
 }
 
+/* INDEX PAGE*/
+
+/* container (modularized into 3 parts) */
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;   /* increase space between sidebar and everything else */
+}
+
+/* sidebar: contains avatar, etc. */
 .sidebar {
-    flex: 1 1 250px;
-    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* horizontally center everything */
     text-align: center;
     padding: 1rem;
 }
+
 .sidebar img {
-    width: 300px; height: 300px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1rem;
+    display: block;             /* margin: auto work */
+    margin: 0 auto 1rem auto;   /* top 0, bottom 1rem, horizontally centered */
+    padding: 0;                 /* no padding TODO: remove */
 }
+
 .sidebar h1 { font-size: 1.5rem; margin: .5rem 0; }
 .sidebar p  { font-size: .95rem;  margin: .2rem 0; }
 .sidebar a  { display:block; margin:.3rem 0; color:var(--accent); text-decoration:none; }
 
-.social-links a{
-    display:inline-flex; height:40px; width:40px;
-    background:rgba(255,255,255,.2); margin:0 10px 10px 0;
-    border-radius:50%; align-items:center; justify-content:center;
-    color:#fff; text-decoration:none; transition:background .3s,color .3s;
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;              /* evenly spaced horizontally */
+    margin-top: 0.2rem;
 }
-.social-links a:hover { background:#fff; color:var(--socials); }
+
+.social-links a {
+    height: 40px;
+    width: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+    margin: 0;              /* no margin TODO: remove */
+}
+
+.social-links a:hover { background:#fff; color:var(--accent); }
+
+/* about me and gallery */
+.middle-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 250px;
+    flex: 1;
+}
+
+.about-box,
+.second-box {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+    position: relative;
+    overflow: hidden;
+
+    /* Make them similar size (slightly wide + half-height) */
+    height: 390px;  /* adjust to taste */
+}
+
+.gallery-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;   /* anchor to center top */
+    position: relative;
+    height: 100%;
+}
+
+.gallery-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   /* <--- left-align text */
+    gap: .4rem;
+    max-width: 50%;
+}
+
+.gallery-content h2 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.gallery-content p {
+    margin: 0;
+    font-size: 1rem;
+    color: #9ba3af;
+}
+
+.gallery-image {
+    width: 45%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 30px;   /* image offset to prevent overlap with right arrow btn */
+}
+
+/* arrow buttons */
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.gallery-arrow.left {
+    left: -10px;   /* shift arrow slightly outside the gallery box content */
+}
+
+.gallery-arrow.right {
+    right: -10px;  /* same idea as above, opposite side */
+}
+
+.gallery-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.gallery-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #555;
+    cursor: pointer;
+    transition: background 0.25s;
+}
+
+.gallery-dot.active {
+    background: var(--accent);
+}
+
+/* featured box (anchored to the right) */
+.right-box {
+    width: 550px;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+
+    /* height = combined height of the about-me and gallery boxes */
+    height: calc(390px * 2 + 2rem);
+    flex-shrink: 0;
+
+    margin-right: 2rem; /* spacing before screen edge */
+}
+
+/* featured rects */
+.repo-list {
+    display: grid;
+    grid-template-columns: 1fr;  /* vertical list */
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* individual featured rectangle */
+.repo-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(6px);
+
+    border: 1px solid #30363d;
+    border-radius: 10px;
+
+    padding: 1rem;
+    height: 100px;
+
+    text-decoration: none; /* no underline */
+    color: inherit;        /* keep text normal */
+
+    transition: border-color .25s, background .25s;
+}
+
+/* hover effect similar to nav bar links (blue accent) */
+.repo-card:hover {
+    border-color: var(--accent);
+    background: rgba(88, 166, 255, 0.12); /* subtle blue tint */
+}
+
+/* keyboard focus highlight */
+/* TODO: might remove this later on - test it */
+.repo-card:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* title + description container */
+.repo-text {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+
+/* title */
+    .repo-text strong {
+    font-size: 1rem;
+    color: var(--fg);
+}
+
+/* desc */
+    .repo-text small {
+    font-size: 0.85rem;
+    color: #9ba3af;
+}
+
+/* thumbnail image (anchored center right) */
+.repo-thumb {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+
+    margin-left: 1rem;
+    flex-shrink: 0;
+}
+
+/* secret */
+.floating-link {
+    position: fixed;       /* stay in the viewport */
+    bottom: 10px;          /* distance from bottom */
+    right: 10px;            /* distance from right */
+    background: rgba(0,0,0,0.4);  /* semi-transparent */
+    color: var(--btn-hover);
+    padding: 0.4rem 0.7rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    z-index: 1000;         /* above most other elements */
+    transition: background 0.3s, transform 0.2s;
+}
+
+.floating-link:hover {
+    background: rgba(88, 166, 255, 0.2);
+    transform: translateY(-2px);  /* subtle hover lift */
+}
+
+/* BLOG, PORTFOLIO, POSTS */
 
 .main { flex:2 1 500px; min-width:0; padding:1rem; }
 .main h2 { font-size:1.8rem; margin-bottom:1rem; }
 .main p  { font-size:1.1rem; line-height:1.6; }
+
 
 .blog-button{
     margin-top:2rem; display:inline-block; padding:.75rem 1.5rem;
@@ -90,7 +326,7 @@ body {
 }
 .blog-button:hover{ background:var(--btn-hover); }
 
-/* ───────── BLOG-LIST PAGE ─────────────────── */
+/* blog listing */
 .blog-header{ justify-content:space-between; align-items:center; }
 .site-title a{ color:var(--fg); text-decoration:none; font-size:1.2rem; font-weight:600; }
 
@@ -104,6 +340,7 @@ body {
     display:flex; flex-wrap:nowrap; gap:1rem;
     overflow-x:auto; padding-bottom:1rem;
 }
+
 .blog-card{
     flex:0 0 auto; min-width:220px;
     background:#161b22; border:1px solid #30363d;
@@ -111,11 +348,12 @@ body {
     color:var(--fg); text-decoration:none;
     transition:border-color .2s;
 }
+
 .blog-card:hover{ border-color:var(--accent); }
 
-/* ───────── POST PAGE TYPOGRAPHY ───────────── */
+/* blog post page typography */
 .post-wrapper{
-    max-width:850px; /* keeps text line-length readable */
+    max-width:850px; /* keep text line-length readable */
     width:100%;
     margin:0 auto;
     padding:2rem 1.5rem; /* breathing room left / right */
@@ -132,10 +370,12 @@ body {
     border-bottom:1px solid #30363d;
     padding-bottom:.4rem;
 }
+
 .post-date{
     font-style:italic; font-size:.95rem; color:#8b949e;
     margin:0 0 2rem;
 }
+
 .post-content h2{ font-size:1.6rem; margin:2rem 0 .8rem; }
 .post-content h3{ font-size:1.3rem; margin:1.6rem 0 .6rem; }
 
@@ -180,12 +420,12 @@ body {
 .post-content img.w600          { max-width:600px; }
 .post-content img.w400          { max-width:400px; }
 
-/* ── latest-post hero ───────────────────────────────── */
-.blog-heading       { font-size:1.4rem; margin:0 0 .6rem; }
+/* latest post */
+.blog-heading { font-size:1.4rem; margin:0 0 .6rem; }
 
 .latest-card{
     display:block;
-    height:280px; /* adjust hero height here */
+    height:280px;
     background-size:cover;
     background-position:center;
     border-radius:8px;
@@ -204,37 +444,17 @@ body {
 
 .blog-sep{ border:0; border-top:1px solid #30363d; margin:2.5rem 0; }
 
-/* ── smaller post cards ─────────────────────────────── */
-/* ── responsive grid of post cards ─────────────── */
+/* responsive grid of post cards */
 .blog-grid{
     display:grid;
     gap:1rem;
-    /* default: fill the row with as many 220-px cards as fit */
+    /* default: fill the row with as many 220px cards as fit */
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     margin-bottom:2rem;
 }
 
-/* Desktop ≥ 1100px → exactly 6 columns */
-@media (min-width: 1100px){
-    .blog-grid{ grid-template-columns: repeat(6, 1fr); }
-}
-
-/* Phone ≤ 600px → 2 columns */
-@media (max-width: 600px){
-    .blog-grid{ grid-template-columns: repeat(2, 1fr); }
-}
-
-/* blog-card already defined – make width 100% so grid controls the size */
-.blog-card{
-    width:100%; height:140px; /* keep the visual size */
-    background-size:cover; background-position:center;
-    border-radius:6px; position:relative;
-    text-decoration:none;
-    flex:none; /* disable the old flex sizing */
-}
-
-/* Remove old horizontal strip behaviour */
-.blog-strip{ display:none; } /* (optional cleanup) */
+/* remove old horizontal strip behaviour */
+.blog-strip{ display:none; } /* cleanup */
 
 .card-overlay{
     position:absolute; inset:0;
@@ -245,23 +465,20 @@ body {
     transition:border-color .2s;
 }
 
+/* blog-card already defined - make width 100% so grid controls the size */
+.blog-card{
+    width:100%; height:140px; /* keep the visual size */
+    background-size:cover; background-position:center;
+    border-radius:6px; position:relative;
+    text-decoration:none;
+    flex:none; /* disable the old flex sizing */
+}
+
 .blog-card:hover .card-overlay{ border-color:var(--accent); }
 .card-overlay strong{color:var(--fg); font-weight:600; line-height:1.3;}
 .card-overlay small {color:#8b949e; margin-top:.2rem;}
 
-
-
-/* ───────── RESPONSIVE ─────────────────────── */
-@media (max-width:768px){
-    .site-header      { justify-content:center; }
-    .blog-header      { flex-direction:column; gap:.5rem; }
-    .container        { flex-direction:column; align-items:center; }
-    .main             { text-align:center; }
-    .sidebar img      { width:200px; height:200px; }
-}
-
-/* ───────── CANVAS BACKGROUND LAYER ───────── */
-
+/* canvas bg layer*/
 #nokey {
     position: fixed;
     inset: 0;
@@ -270,12 +487,49 @@ body {
 
     z-index: 0; /* behind all content */
     background: transparent;
-}
+    }
 
-/* Force all real content above the canvas */
-body > *:not(canvas) {
+    /* force all real content above the canvas */
+    body > *:not(canvas) {
     position: relative;
     z-index: 1;
 }
 
+/* RESPONSIVE (stack into columns on mobile) */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .right-box {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+    }
+
+    .about-box,
+    .second-box {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* resolution ≥ 1100px (desktop) = exactly 6 columns */
+@media (min-width: 1100px){
+    .blog-grid{ grid-template-columns: repeat(6, 1fr); }
+}
+
+/* res ≤ 600px (phone) = 2 columns */
+@media (max-width: 600px){
+    .blog-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Responsive */
+@media (max-width:768px){
+    .site-header      { justify-content:center; }
+    .blog-header      { flex-direction:column; gap:.5rem; }
+    .container        { flex-direction:column; align-items:center; }
+    .main             { text-align:center; }
+    .sidebar img      { width:200px; height:200px; }
+}

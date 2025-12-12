@@ -1,23 +1,28 @@
 ---
-layout: animated
+layout: default
 title: Nikolaj Bjørnager
 permalink: /portfolio/
 ---
+
+<!-- Setup canvas bg -->
+<canvas id="nokey"></canvas>
 
 <header class="site-header blog-header">
   <div class="site-title"><a href="/">Nikolaj Bjørnager</a></div>
   <nav>
     <a class="nav-link" href="/">HOME</a>
     <a class="nav-link" href="/blog">BLOG</a>
-    <a class="nav-link" href="/portfolio">PORTFOLIO</a>
+    <a class="nav-link" style="color:#58a6ff" href="/portfolio">PORTFOLIO</a>
   </nav>
 </header>
 
 <main class="blog-container">
   <h1 class="blog-heading">Portfolio</h1>
   <hr class="blog-sep">
+
   <div class="blog-grid">
     {%- assign resume_posts = site.tags.resume | default: site.categories.resume -%}
+
     {%- for post in resume_posts -%}
       <a href="{{ post.url }}" class="blog-card"
          style="background-image:url('{{ post.thumb | default:'/images/post-thumbs/default.webp' | relative_url }}');">
@@ -29,3 +34,6 @@ permalink: /portfolio/
     {%- endfor -%}
   </div>
 </main>
+
+<!-- load js -->
+<script src="{{ '/js/canvas.js' | relative_url }}"></script>

@@ -238,7 +238,7 @@ function initCanvas(){
     canvas.width = window.innerWidth * dpr;
     canvas.height = window.innerHeight * dpr;
 
-    // Set CSS display size (so it doesn’t appear gigantic)
+    // Set CSS display size (so it does not appear gigantic)
     canvas.style.width = window.innerWidth + "px";
     canvas.style.height = window.innerHeight + "px";
 

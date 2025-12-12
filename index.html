@@ -1,45 +1,147 @@
 ---
-layout: animated
+layout: default
 title: Nikolaj Bjørnager
 ---
-<!-- ===== NAVIGATION BAR ===== -->
+
+<!-- Setup canvas bg -->
+<canvas id="nokey"></canvas>
+
+<!-- Nav bar -->
 <header class="site-header">
   <nav>
-    <a class="nav-link" href="/">HOME</a>
+    <a class="nav-link" style="color:#58a6ff" href="/">HOME</a>
     <a class="nav-link" href="/blog">BLOG</a>
     <a class="nav-link" href="/portfolio">PORTFOLIO</a>
   </nav>
 </header>
 
-<!-- ===== MAIN CONTENT ===== -->
+<!-- The main "body" of the page. Contains everything central to thesite -->
 <div class="container">
-  <!-- LEFT SIDEBAR -->
+
+  <!-- Left sidebar featuring avatar, title, social links, etc. -->
   <div class="sidebar">
-    <img src="images/avatar.webp" alt="Nikolaj Bjørnager" />
+    <img src="images/avatar.webp" alt="Nikolaj Bjørnager" title="Image by Diba Alam" />
+
     <h1>Nikolaj Bjørnager</h1>
-    <p>Robotics & Biomedical Engineering (M.Sc.) @ AAU</p>
+    <p>Robotics & Biomedical Engineering (M.Sc.)<br>@ Aalborg University</p>
     <p>Denmark</p>
-    <hr>
-    <p><i>mail@nikolajbjoernager.dk</i></p>
-    <hr><br>
+
+    <p style="margin-top: 3rem;"><i>Find me on other platforms!</i></p>
     <div class="social-links">
       <a target="_blank" rel="noreferrer noopener" href="https://github.com/NikoBK"><i class="fab fa-github"></i></a>
       <a target="_blank" rel="noreferrer noopener" href="https://www.linkedin.com/in/nikolaj-bjoernager"><i class="fab fa-linkedin"></i></a>
       <a target="_blank" rel="noreferrer noopener" href="https://www.youtube.com/@nikolajbjoernager"><i class="fab fa-youtube"></i></a>
+      <a href="mailto:mail@nikolajbjoernager.dk"><i class="fas fa-envelope"></i></a>
     </div>
-</div>
-
-  <!-- RIGHT MAIN SECTION -->
-  <div class="main">
-    <h2>About Me</h2>
-    <p>
-    Hi! I am a student at Aalborg University (AAU) who is finishing up their bachelor of science (b.sc) in Robotics Engineering. I am currently looking forward to beginning a master of science (m.sc) in biomedical engineering with the hopes of combining both degrees to be a biomedical robotics engineer who specializes in robotics applied in the health sector worldwide.
-    </p>
-
-    <hr />
-
-    <h2>Knowledge Sharing</h2>
-    <p>I am very thrilled to try out blogging, not directly related to robotics in any specific branch of technology but rather any kind of topic that I find interesting enough to blog about. Topics may range from anything between game design, and biology. Things like computer vision, engineering, math, physics, anatomy, physiology, psychology and etc are of great interest to me.<br><br>The <a href="/blog">blog post site</a> will offer categorization and sorting of blog posts so that you can check out specific types of blogs I do. I hope to see you there!</p>
-
   </div>
+  <!-- end: sidebar -->
+
+  <!-- Middle column: about me and gallery -->
+  <div class="middle-column">
+    <!-- About me text -->
+    <div class="about-box">
+      <!-- Title -->
+      <h2>About Me</h2>
+
+      <!-- Text -->
+      <p>I am an engineer from Denmark who has studied robotics and biomedicine. I aspire to work in a field where technology can be merged with the human body and mind. I also invest time and energy in studying psychology, and some of my pastime hobbies are arts and crafts, game development, and playing guitar. I have created this webpage as an outlet for many of these interests of mine to share with those of you who are reading this (but also those who stopped reading a few words ago).
+      <br><br>
+
+      Some of the people who have inspired me the most to make this blog are: <a target="_blank" rel="noreferrer noopener" href="https://www.redblobgames.com/">Amit Partel</a>, <a target="_blank" rel="noreferrer noopener" href="https://github.com/icalleddibs">Diba Alam</a>, <a target="_blank" rel="noreferrer noopener" href="https://github.com/mads256h">Mads Mogensen</a>, <a target="_blank" rel="noreferrer noopener" href="https://www.youtube.com/c/SebastianLague">Sebastian Lague</a>, and <a target="_blank" rel="noreferrer noopener" href="https://www.youtube.com/@ThinMatrix">ThinMatrix</a>. If any of you ever read this, I am honored to have you here. This goes for everyone in general, so to all of you reading, whoever you are, thank you for visiting. I hope you enjoy your stay!
+      <br><br>
+
+      <i>The blog page shows all blog posts I have published that may be tutorials, guides, thoughts on my mind, etc., while my portfolio page shows projects that explore and define my skills on a larger and more technical scope than my pastime interests.</i></p>
+    </div>
+    <!-- end: about me -->
+
+    <!-- middle column, second box: gallery -->
+    <div class="second-box">
+      <div class="gallery-box">
+        <!-- Left arrow button -->
+        <button class="gallery-arrow left" id="galleryPrev">&lt;</button>
+
+        <!-- Content -->
+        <div class="gallery-content">
+          <!-- Title -->
+          <h2 id="galleryTitle">Underwater Image Enhancing</h2>
+
+          <!-- Description -->
+          <p id="galleryDesc">Check out this project I did where my team and I took our first dive into enhancing colors and details on underwater image pictures using OpenCV in Python!</p>
+        </div>
+
+        <!-- Image -->
+        <img id="galleryImage" class="gallery-image" src="https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/imgenhance.webp" alt="Gallery Image">
+
+        <!-- Right arrow button -->
+        <button class="gallery-arrow right" id="galleryNext">&gt;</button>
+
+        <!-- Dots (gallery index indicator) -->
+        <div class="gallery-dots">
+          <span class="gallery-dot active" data-index="0"></span>
+          <span class="gallery-dot" data-index="1"></span>
+          <span class="gallery-dot" data-index="2"></span>
+        </div>
+      </div>
+    </div>
+    <!-- end: gallery -->
+  </div>
+  <!-- end: middle-column -->
+
+  <!-- Featured box -->
+  <div class="right-box">
+    <!-- title -->
+    <h2>Featured</h2>
+
+    <!-- Featured list box. Max capacity: 6 items -->
+    <div class="repo-list">
+
+      <!-- TEMPLATE FOR ITEMS
+
+      <a class="repo-card" href="https://github.com/NikoBK/project" target="_blank" rel="noopener">
+      <div class="repo-text">
+      <strong>Title</strong>
+      <small>Description</small>
+      </div>
+      <img src="https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/default.webp" class="repo-thumb" alt="">
+      </a>
+
+      --->
+
+      <!-- Featured rects: -->
+
+      <a class="repo-card" href="https://github.com/NikoBK/NikoBK.github.io" target="_blank" rel="noopener">
+      <div class="repo-text">
+      <strong>This Website</strong>
+      <small>The source code for this website!</small>
+      </div>
+      <img src="https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/default.webp" class="repo-thumb" alt="">
+      </a>
+
+      <a class="repo-card" href="https://github.com/NikoBK/aau-report-template" target="_blank" rel="noopener">
+      <div class="repo-text">
+      <strong>Scientific Report Template</strong>
+      <small>A report template for students at AAU written in LaTeX.</small>
+      </div>
+      <img src="https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/default.webp" class="repo-thumb" alt="">
+      </a>
+
+      <a class="repo-card" href="https://github.com/NikoBK/aau-robotics" target="_blank" rel="noopener">
+      <div class="repo-text">
+      <strong>Robotics Scripts</strong>
+      <small>A collection of useful scripts for AAU robotics students.</small>
+      </div>
+      <img src="https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/default.webp" class="repo-thumb" alt="">
+      </a>
+
+    </div>
+  </div>
+  <!-- end of: right-box -->
 </div>
+<!-- end of: container -->
+
+<!-- secret button -->
+<a href="/vertices" class="floating-link">secret</a>
+
+<!-- load js -->
+<script src="{{ '/js/gallery.js' | relative_url }}"></script>
+<script src="{{ '/js/canvas.js' | relative_url }}"></script>
