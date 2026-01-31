@@ -5,7 +5,7 @@ lastedit: 2025-12-04
 layout: post
 hidden: false
 tags: [tutorial, cpp]
-thumb: /images/thumbs/default.webp
+thumb: /images/thumbs/cpp.webp
 permalink: /:title/
 ---
 
