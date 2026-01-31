@@ -542,6 +542,15 @@ input[type="range"] {
     opacity: 0.8;
 }
 
+/* Table of Contents (created by Jekyll from markdown) */
+#markdown-toc a,
+#markdown-toc a:visited,
+#markdown-toc a:hover,
+#markdown-toc a:active,
+#markdown-toc a:focus {
+    color: #31649F;
+    text-decoration: none;
+}
 
 /* canvas bg layer*/
 #nokey {
