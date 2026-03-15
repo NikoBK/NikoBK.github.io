@@ -163,7 +163,7 @@ body {
 /* arrow buttons */
 .gallery-arrow {
     position: absolute;
-    top: 50%;
+    top: 90%;
     transform: translateY(-50%);
     font-size: 2rem;
     background: none;

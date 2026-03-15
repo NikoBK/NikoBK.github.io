@@ -1,5 +1,10 @@
 const galleryData = [
 {
+    title: "ESA ESTEC Robotics Workshop, 2025",
+    desc: "Back in May, 2025, I had the privilege of participating in the ESA Academy's Robotics Workshop at the European Space Research and Technology Centre (ESTEC) in Noordwijk, the Netherlands. Here, my team and I worked on a Mars rover where we implemented input controls, computer vision and artificial intelligence on our rover to finally compete against other teams at the workshop.",
+    img: "https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/esa.webp"
+},
+{
     title: "Underwater Image Enhancing",
     desc: "Check out this project I did where my team and I took our first dive into enhancing colors and details on underwater image pictures using OpenCV in Python. Find it on the blog or port folio!",
     img: "https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/imgenhance.webp"
