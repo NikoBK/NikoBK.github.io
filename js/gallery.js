@@ -1,8 +1,13 @@
 const galleryData = [
 {
-    title: "ESA ESTEC Robotics Workshop, 2025",
+    title: "ESA Robotics Workshop, 2025",
     desc: "Back in May, 2025, I had the privilege of participating in the ESA Academy's Robotics Workshop at the European Space Research and Technology Centre (ESTEC) in Noordwijk, the Netherlands. Here, my team and I worked on a Mars rover where we implemented input controls, computer vision and artificial intelligence on our rover to finally compete against other teams at the workshop.",
     img: "https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/esa.webp"
+},
+{
+    title: "MetaTagger",
+    desc: "MetaTagger is the first packaged software I have ever released. It is an application that allows you to edit meta data such as titles, descriptions, authors, and even set cover art for local audio files you might want to use in your favorite media player such as Spotify!",
+    img: "https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/metatagger.webp"
 },
 {
     title: "Underwater Image Enhancing",
