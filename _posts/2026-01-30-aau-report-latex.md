@@ -24,7 +24,7 @@ Unlike the fork of [Mads Mogensen's template](https://github.com/mads256h/aau-re
 
 Instead we are going to start with how to import my template to Overleaf, the basic setup, configuration and basic usage. This guide will not cover the use of this template for locally compiled LaTeX.
 
-![Template titlepage]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/demo-titlepage.png' }}){: .w800 }
+![Template titlepage]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/demo-titlepage.webp' }}){: .w800 }
 
 **Furthermore: I recommend revisiting this page later as I will update this post over time to add more useful tips and tricks!**
 
@@ -40,11 +40,11 @@ This section covers the overleaf setup which includes:
 ## From Github to Overleaf
 To start, go to the [official repository's release page](https://github.com/NikoBK/aau-report-template/releases){:target="_blank" rel="noopener noreferrer"}. Download the latest release:
 
-![Look for "latest release"]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/latest-release.png' }}){: .w800 }
+![Look for "latest release"]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/latest-release.webp' }}){: .w800 }
 
 when you are on Overleaf click the green 'New Project' button and pick the 'Upload Project' option:
 
-![Upload project]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/upload-project.png' }}){: .w800 }
+![Upload project]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/upload-project.webp' }}){: .w800 }
 
 Select a zip file and pick the one you downloaded from my template's release page on github. It should throw you into the project and you will most likely encounter an error which we will fix very soon.
 
@@ -52,7 +52,7 @@ Select a zip file and pick the one you downloaded from my template's release pag
 ## Renaming Your Project
 To rename your project click the name in the top of the page and select 'Rename'. I will just name mine 'Project Report' for the sake of this post:
 
-![Rename the project]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/rename.png' }}){: .w800 }
+![Rename the project]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/rename.webp' }}){: .w800 }
 
 Everytime you upload this project it will be named after the file you upload so this will avoid ambiguous project names in your Overleaf landing page.
 
@@ -60,7 +60,7 @@ Everytime you upload this project it will be named after the file you upload so 
 ## Make the Template Compile
 The reason the project is currently not compiling is that Overleaf tries to assign a 'Main document' on its own. The main document is described as: "*The primary file for compiling your project. You can also right-click a file to set it as main.*". As the description says you can right click any document to make it the main document, we want `master.tex` to be the main document. Either right click it and set it as the main document, or click the settings cog-wheel in the bottom left, go to 'Compiler' and change it from what is most likely `setup/preamble.tex` to `master.tex`. It should look like this when you are done:
 
-![Compiler settings (Overleaf Jan, 2026)]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/compiler-settings.png' }}){: .w800 }
+![Compiler settings (Overleaf Jan, 2026)]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/compiler-settings.webp' }}){: .w800 }
 
 Now before we move on there is an important rule to understand regarding this template. The project will be unable to compile while you have the `setup/preamble.tex` file open in Overleaf. This is because Overleaf tries to treat the open document as a root file or a derivative of the root file which breaks because the preamble does not contain an important line of TeX that goes: `\documentclass{...}`. For now, you just need to know this rule and it might help to know that the preamble is where we import packages we need for "extra features", but we will go into that in a later section of this post.
 
@@ -159,15 +159,15 @@ Because I am using only 1 supervisor we need to make a quick change to something
 That is it!
 Now when you recompile you should see author names on the title page:
 
-![Titlepage with authors]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/titlepage.png' }}){: .w800 }
+![Titlepage with authors]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/titlepage.webp' }}){: .w800 }
 
 As well as both authors and supervisor(s) on the front page:
 
-![Frontpage with authors and supervisors]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/frontpage.png' }}){: .w800 }
+![Frontpage with authors and supervisors]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/frontpage.webp' }}){: .w800 }
 
 And names + emails on the preface:
 
-![Preface with authors and mails]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/preface.png' }}){: .w800 }
+![Preface with authors and mails]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/preface.webp' }}){: .w800 }
 
 Whatever group number you have been assigned by your university can be changed in `user.tex` on line 56, at `\newcommand{\projectgroup}{a123}`.
 
@@ -273,7 +273,7 @@ This is a citation to Madsen2010.\cite{Madsen2010}
 ## Creating & Deleting Sections
 To create a new section for your report click the three dots or right click the `sections` folder, then create a new file:
 
-![Creating a new file]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/new-file.png' }}){: .w800 }
+![Creating a new file]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/new-file.webp' }}){: .w800 }
 
 It will open a window with a prompt for a file name, I am just going to call it `newsection.tex`. This will create the empty document, paste in the following TeX:
 ```latex
@@ -299,7 +299,7 @@ Now to actually make the section show up in the report, go to `master.tex` and a
 
 Now compile the report and you should see this after the introduction chapter's page:
 
-![Creating a new chapter]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/new-chapter.png' }}){: .w800 }
+![Creating a new chapter]({{ 'https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/dev/images/latex-report/new-chapter.webp' }}){: .w800 }
 
 **Deleting Sections**\
 To delete a section simply remove or comment out the inclusion of it in the main document, like this:
