@@ -1,165 +1,85 @@
 ---
 layout: default
 title: Nikolaj Bjørnager
+permalink: /vertices/
 ---
 
-<!-- Setup canvas bg -->
-<canvas id="nokey"></canvas>
-
-<!-- Nav bar -->
-<header class="site-header">
+<header class="site-header blog-header">
+  <div class="site-title"><a href="/">Nikolaj Bjørnager</a></div>
   <nav>
-    <a class="nav-link" style="color:#58a6ff" href="/">HOME</a>
-    <a class="nav-link" href="/blog">BLOG</a>
-    <a class="nav-link" href="/portfolio">PORTFOLIO</a>
+    <a class="nav-link" href="/">BACK</a>
   </nav>
 </header>
 
-<!-- The main "body" of the page. Contains everything central to thesite -->
-<div class="container">
-
-  <!-- Left sidebar featuring avatar, title, social links, etc. -->
-  <div class="sidebar">
-    <img src="images/avatar.webp" alt="Nikolaj Bjørnager" title="Image by Diba Alam" />
-
-    <h1>Nikolaj Bjørnager</h1>
-    <p>Robotics Engineering (B.Sc.)<br>@ Aalborg University</p>
-    <p>Denmark</p>
-
-    <p style="margin-top: 3rem;"><i>Find me on other platforms!</i></p>
-    <div class="social-links">
-      <a target="_blank" rel="noreferrer noopener" href="https://github.com/NikoBK"><i class="fab fa-github"></i></a>
-      <a target="_blank" rel="noreferrer noopener" href="https://www.linkedin.com/in/nikolaj-bjoernager"><i class="fab fa-linkedin"></i></a>
-      <a target="_blank" rel="noreferrer noopener" href="https://www.youtube.com/@nikolajbjoernager"><i class="fab fa-youtube"></i></a>
-      <a href="mailto:mail@nikolajbjoernager.dk"><i class="fas fa-envelope"></i></a>
-    </div>
+<div id="controls">
+  <div class="control-group">
+    <label for="ballRange">Ball Count</label>
+    <input type="range" id="ballRange" min="0" max="150" value="30">
+    <span class="value" id="ballValue">30</span>
   </div>
-  <!-- end: sidebar -->
 
-  <!-- Middle column: about me and gallery -->
-  <div class="middle-column">
-    <!-- About me text -->
-    <div class="about-box">
-      <!-- Title -->
-      <h2>About Me</h2>
-
-      <!-- Text -->
-      <p>I am an engineer from Denmark who has studied robotics and biomedicine. I aspire to work in a field where technology can be merged with the human body and mind. I also invest time and energy in studying psychology, and some of my pastime hobbies are arts and crafts, game development, and playing guitar. I have created this webpage as an outlet for many of these interests of mine to share with those of you who are reading this (but also those who stopped reading a few words ago).
-      <br><br>
-
-      Some of the people who have inspired me the most to make this blog are: <a target="_blank" rel="noreferrer noopener" href="https://www.redblobgames.com/">Amit Patel</a>, <a target="_blank" rel="noreferrer noopener" href="https://github.com/icalleddibs">Diba Alam</a>, <a target="_blank" rel="noreferrer noopener" href="https://github.com/mads256h">Mads Mogensen</a>, <a target="_blank" rel="noreferrer noopener" href="https://www.youtube.com/c/SebastianLague">Sebastian Lague</a>, and <a target="_blank" rel="noreferrer noopener" href="https://www.youtube.com/@ThinMatrix">ThinMatrix</a>. If any of you ever read this, I am honored to have you here. This goes for everyone in general, so to all of you reading, whoever you are, thank you for visiting. I hope you enjoy your stay!
-      <br><br>
-
-      <i>The <a href="/blog">blog page</a> shows all blog posts I have published that may be tutorials, guides, thoughts on my mind, etc., while my <a href="/portfolio">portfolio page</a> shows projects that explore and define my skills on a larger and more technical scope than my pastime interests.</i></p>
-    </div>
-    <!-- end: about me -->
-
-    <!-- middle column, second box: gallery -->
-    <div class="second-box">
-      <div class="gallery-box">
-        <!-- Left arrow button -->
-        <button class="gallery-arrow left" id="galleryPrev">&lt;</button>
-
-        <!-- Content -->
-        <div class="gallery-content">
-          <!-- Title -->
-          <h2 id="galleryTitle">ESA Robotics Workshop, 2025</h2>
-
-          <!-- Description -->
-          <p id="galleryDesc">Back in May, 2025, I had the privilege of participating in the ESA Academy's Robotics Workshop at the European Space Research and Technology Centre (ESTEC) in Noordwijk, the Netherlands. Here, my team and I worked on a Mars rover where we implemented input controls, computer vision and artificial intelligence on our rover to finally compete against other teams at the workshop.</p>
-        </div>
-
-        <!-- Image -->
-        <img id="galleryImage" class="gallery-image" src="https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/esa.webp" alt="Gallery Image">
-
-        <!-- Right arrow button -->
-        <button class="gallery-arrow right" id="galleryNext">&gt;</button>
-
-        <!-- Dots (gallery index indicator) -->
-        <div class="gallery-dots">
-          <span class="gallery-dot active" data-index="0"></span>
-          <span class="gallery-dot" data-index="1"></span>
-          <span class="gallery-dot" data-index="2"></span>
-          <span class="gallery-dot" data-index="3"></span>
-          <span class="gallery-dot" data-index="4"></span>
-        </div>
-      </div>
-    </div>
-    <!-- end: gallery -->
+  <div class="control-group">
+    <label for="sizeRange">Ball Size</label>
+    <input type="range" id="sizeRange" min="1" max="8" value="2">
+    <span class="value" id="sizeValue">2</span>
   </div>
-  <!-- end: middle-column -->
 
-  <!-- Featured box -->
-  <div class="right-box">
-    <!-- title -->
-    <h2>Featured</h2>
-
-    <!-- Featured list box. Max capacity: 6 items -->
-    <div class="repo-list">
-
-      <!-- TEMPLATE FOR ITEMS
-
-      <a class="repo-card" href="https://github.com/NikoBK/project" target="_blank" rel="noopener">
-      <div class="repo-text">
-      <strong>Title</strong>
-      <small>Description</small>
-      </div>
-      <img src="https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/default.webp" class="repo-thumb" alt="">
-      </a>
-
-      --->
-
-      <!-- Featured rects: -->
-
-      <a class="repo-card" href="https://github.com/NikoBK/metatagger" target="_blank" rel="noopener">
-      <div class="repo-text">
-      <strong>MetaTagger 1.0 Released!</strong>
-      <small>I released an application to edit sound file meta data.</small>
-      </div>
-      <img src="https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/metatagger.webp" class="repo-thumb" alt="">
-      </a>
-
-      <a class="repo-card" href="https://github.com/NikoBK/NikoBK.github.io" target="_blank" rel="noopener">
-      <div class="repo-text">
-      <strong>This Website</strong>
-      <small>The source code for this website!</small>
-      </div>
-      <img src="https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/thiswebsite.webp" class="repo-thumb" alt="">
-      </a>
-
-      <a class="repo-card" href="https://github.com/NikoBK/aau-report-template" target="_blank" rel="noopener">
-      <div class="repo-text">
-      <strong>Scientific Report Template</strong>
-      <small>A report template for students at AAU written in LaTeX.</small>
-      </div>
-      <img src="https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/reportandbeamer.webp" class="repo-thumb" alt="">
-      </a>
-
-      <a class="repo-card" href="https://github.com/NikoBK/aau-beamer-template" target="_blank" rel="noopener">
-      <div class="repo-text">
-      <strong>LaTeX Beamer (Presentation) Template</strong>
-      <small>A beamer template for students at AAU written in LaTeX.</small>
-      </div>
-      <img src="https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/reportandbeamer.webp" class="repo-thumb" alt="">
-      </a>
-
-      <a class="repo-card" href="https://github.com/NikoBK/aau-robotics" target="_blank" rel="noopener">
-      <div class="repo-text">
-      <strong>Robotics Scripts</strong>
-      <small>A collection of useful scripts for AAU robotics students.</small>
-      </div>
-      <img src="https://raw.githubusercontent.com/NikoBK/NikoBK.github.io/refs/heads/master/images/thumbs/acopos.webp" class="repo-thumb" alt="">
-      </a>
-
-    </div>
+  <div class="control-group">
+    <label for="speedRange">Ball Speed</label>
+    <input type="range" id="speedRange" min="0.2" max="3" step="0.1" value="1">
+    <span class="value" id="speedValue">1.0</span>
   </div>
-  <!-- end of: right-box -->
+
+  <div class="control-group">
+    <label for="colorPicker">Color</label>
+    <input type="color" id="colorPicker" value="#5cdce6">
+  </div>
 </div>
-<!-- end of: container -->
 
-<!-- secret button -->
-<a href="/vertices" class="floating-link">secret</a>
+<p style="position: fixed; bottom: 10px; left: 10px; font-size: 0.9rem;"><i>Particles Random Animation in Canvas</i> by J.K.Bi on <a target="_blank" rel="noreferrer noopener" href="https://codepen.io/jkiss/pen/OVEeqK">codepen</a></p>
 
-<!-- load js -->
-<script src="{{ '/js/gallery.js' | relative_url }}"></script>
+
+<canvas id="nokey"></canvas>
+
 <script src="{{ '/js/canvas.js' | relative_url }}"></script>
+
+<script>
+  const ballRange = document.getElementById("ballRange");
+  const ballValue = document.getElementById("ballValue");
+
+  ballRange.addEventListener("input", function() {
+      BALL_NUM = parseInt(ballRange.value);
+      ballValue.textContent = BALL_NUM;
+
+      // Optional: instantly adjust the number of balls
+      adjustBallCount();
+  });
+
+  function adjustBallCount() {
+      if (balls.length > BALL_NUM) {
+          balls = balls.slice(0, BALL_NUM);
+      } else {
+          while (balls.length < BALL_NUM) {
+              balls.push(getRandomBall());
+          }
+      }
+  }
+</script>
+
+<script>
+document.getElementById("colorPicker").addEventListener("input", function(e) {
+    const hex = e.target.value;
+
+    ball_color = hexToRGB(hex);
+});
+
+function hexToRGB(hex) {
+    const bigint = parseInt(hex.slice(1), 16);
+    return {
+        r: (bigint >> 16) & 255,
+        g: (bigint >> 8) & 255,
+        b: bigint & 255
+    };
+}
+</script>
+
