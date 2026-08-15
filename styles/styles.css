@@ -154,10 +154,11 @@ body {
 
 .gallery-image {
     width: 45%;
+    max-width: 420px;
     height: 80%;
     object-fit: cover;
     border-radius: 10px;
-    margin-right: 30px;   /* image offset to prevent overlap with right arrow btn */
+    margin-right: 30px; /* image offset to prevent overlap with right arrow btn */
 }
 
 /* arrow buttons */
